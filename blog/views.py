@@ -4,7 +4,7 @@ from .models import Post,PostImage
 from django.views.generic import ListView,DetailView,CreateView,UpdateView,DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
-from comments.models import Comment
+
 from django.contrib.contenttypes.models import ContentType
 from django.shortcuts import get_object_or_404,render,redirect
 from django.db.models import Q
