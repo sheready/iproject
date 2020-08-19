@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+    <div class="mt-5 container-fluid border border-secondary">
+        <img class="rounded-circle article-img float-left" style="width:100px;height:100px" src="{{ object.author.profile.image.url}}">
+        <h2 class="text float-left"> {{ object.author }} </h2><br><br>
+        
+        <div class="container">
+            <img src="{{object.article_image.url}}" class="img-responsive d-block img-thumbnail" alt="Image" >
+        </div>
+      
+        <div class="container">
+            <p class="text float-left" style="font-weight: bold;font-size: 15px;"> {{ object.author }} </p>
+            <p class="text float-left"> {{ object.content }} </p><br>
+            
+        </div>
+        {% if object.author == user %}
+            <div class="container">
+                <a class="btn btn-danger" href="{% url 'post-update' object.id %}" >Edit project </a>
+                <a class="btn btn-danger" href="{% url 'post-delete' object.id %}" >Delete project </a>
+            </div>
+
+        {% endif %}
+            <hr>
+            <div class="container ml-5 ">
+                <a class="btn btn-danger" href="{% url 'home' %}" >Rate a project </a>
+                <a class="btn btn-danger" href="{% url 'create' %}" >Create a new rating </a>
+            </div>
+            
+            <div class="container">
+                <small class="text-muted float-left">{{object.date_posted}}</small>    
+            </div>
+    </div>    
+    <br>
+    <hr>
+   
+{% endblock %}
+ 

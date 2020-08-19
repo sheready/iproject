@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% block content%}
+<!--Carousel Wrapper-->
+<div id="carousel-example-2" class="carousel slide carousel-fade" data-ride="carousel">
+    <!--Indicators-->
+    <ol class="carousel-indicators">
+      <li data-target="#carousel-example-2" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel-example-2" data-slide-to="1"></li>
+      <li data-target="#carousel-example-2" data-slide-to="2"></li>
+    </ol>
+    <!--/.Indicators-->
+    <!--Slides-->
+    <div class="carousel-inner" role="listbox">
+      <div class="carousel-item active">
+        <div class="view">
+          <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg"
+            alt="First slide">
+          <div class="mask rgba-black-light"></div>
+        </div>
+        <div class="carousel-caption">
+          <h3 class="h3-responsive">WELCOME TO IPROJECTS</h3>
+          <p>Post your website projects for the world to see</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <!--Mask color-->
+        <div class="view">
+          <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(6).jpg"
+            alt="Second slide">
+          <div class="mask rgba-black-strong"></div>
+        </div>
+        <div class="carousel-caption">
+          <h3 class="h3-responsive">PROJECT RATINGS</h3>
+          <p>We allow our users to rate projects and share their ratings</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <!--Mask color-->
+        <div class="view">
+          <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(9).jpg"
+            alt="Third slide">
+          <div class="mask rgba-black-slight"></div>
+        </div>
+        <div class="carousel-caption">
+          <h3 class="h3-responsive">EXPAND MARKET REACH</h3>
+          <p>The projects are viewed globally</p>
+        </div>
+      </div>
+    </div>
+    <!--/.Slides-->
+    <!--Controls-->
+    <a class="carousel-control-prev" href="#carousel-example-2" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carousel-example-2" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+    <!--/.Controls-->
+  </div>
+  <!--/.Carousel Wrapper-->
+  
+
+{% for post in posts %}
+
+    <div class="mt-5 album py-5 bg-light">
+        <div class="container">
+
+            <div class="row" >
+                <div class="ml-5 col-md-6">
+                    <div class="card mb-4 shadow-sm">
+                        <a href="{% url  'post-detail' post.id %}"><img class="bd-placeholder-img card-img-top img-responsive" width="100%" height="300" src="{{post.article_image.url}}"></a>
+                        <div class="card-body">
+                            <img class="rounded-circle article-img" style="width:50px;height:50px"  src="{{ post.author.profile.image.url }}">
+                            <span><p class="mt-2 card-text ">{{ post.author }}  : <b><i>{{post.title}}</i></b></p></span>
+                            <hr>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <p class="mt-2 card-text ">Country of origin:<b>{{ post.country }}</b></p>
+                                <small class=" text-muted">{{post.date_posted}}</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+{% endblock %}
+
+    
