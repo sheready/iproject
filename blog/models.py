@@ -20,6 +20,10 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('post-detail', kwargs={'pk':self.pk})
+    
+    @classmethod
+    def get_author_post(cls,author):
+        return cls.objects.filter(author=author)
         
 class PostImage(models.Model):
     

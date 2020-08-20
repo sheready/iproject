@@ -31,7 +31,7 @@ urlpatterns = [
     path('', include('blog.urls')),
    
    
-    path('profile/',user_views.profile,name='profile'),
+    path('profile/<username>/',user_views.profile,name='profile'),
     url(r'api/posts/', include(('blog.api.urls','blog'),namespace='post-api')),
     url(r'api/profiles/', include(('users.api.urls','users'),namespace='profile-api')),
     

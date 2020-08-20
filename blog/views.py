@@ -13,10 +13,7 @@ def home(request):
     context = {
         'posts':Post.objects.all()
     }
-    queryset_list = Post.objects.all()
-    query = request.GET.get("q")
-    if query:
-        queryset_list = queryset_list.filter(Q(title_icontains=query)|Q(content_icontains=query)|Q(author_icontains=query)).distinct()
+    
     return render(request,'home.html',context)
 
 class PostListView(ListView):

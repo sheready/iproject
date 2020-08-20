@@ -30,6 +30,30 @@
 
 </div>
 
+{% for post in posts %}
+
+    <div class="mt-5 album py-5 bg-light">
+        <div class="container">
+
+            <div class="row" >
+                <div class="ml-5 col-md-6">
+                    <div class="card mb-4 shadow-sm">
+                        <a href="{% url  'post-detail' post.id %}"><img class="bd-placeholder-img card-img-top img-responsive" width="100%" height="300" src="{{post.article_image.url}}"></a>
+                        <div class="card-body">
+                            <img class="rounded-circle article-img" style="width:50px;height:50px"  src="{{ post.author.profile.image.url }}">
+                            <span><p class="mt-2 card-text ">{{ post.author }}  : <b><i>{{post.title}}</i></b></p></span>
+                            <hr>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <p class="mt-2 card-text ">Country of origin:<b>{{ post.country }}</b></p>
+                                <small class=" text-muted">{{post.date_posted}}</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
 
 
 {% endblock %}
